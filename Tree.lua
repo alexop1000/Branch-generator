@@ -94,4 +94,4 @@ tree = Tree.new()
 while wait(0.05) do
 	tree:show()
 	tree:grow()
-end
+end 
