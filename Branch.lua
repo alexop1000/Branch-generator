@@ -12,7 +12,8 @@ function Branch.new(parent, pos, dir)
 		dir = dir,
 		origDir = ndir,
 		count = 0,
-		len = 5
+		len = 5,
+		part = nil
 	},Branch)
 end
 
@@ -30,7 +31,11 @@ end
 
 function Branch:show()
 	if self.parent ~= nil then
-		local line = Instance.new("Part")
+		local line = self.part
+		if self.part == nil then
+			line = Instance.new("Part")
+		end
+		self.part = line
 		local pos1, pos2 = Vector3.new(self.parent.pos.x,self.parent.pos.y,0), Vector3.new(self.pos.x, self.pos.y, 0)
 		local Center = (pos1 + pos2) / 2
 		line.CFrame = CFrame.lookAt(Center, pos1)
